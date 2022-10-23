@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/MassiWR/backend-fullstack-u09#readme",
   "dependencies": {
+    "argon2": "^0.30.1",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "express": "^4.18.2",
