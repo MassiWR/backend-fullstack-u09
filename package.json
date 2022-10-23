@@ -1,0 +1,26 @@
+{
+  "name": "backend-fullstack-u09",
+  "version": "1.0.0",
+  "description": "backend fullstack-restapi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MassiWR/backend-fullstack-u09.git"
+  },
+  "author": "Massi Wararoodi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MassiWR/backend-fullstack-u09/issues"
+  },
+  "homepage": "https://github.com/MassiWR/backend-fullstack-u09#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "express-winston": "^4.2.0",
+    "winston": "^3.8.2"
+  }
+}
