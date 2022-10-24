@@ -26,12 +26,13 @@ class UsersDao {
     async getUserById(userId: string) {
         return this.users.find((user: { id: string }) => user.id === userId);
     }
+    
     async putUserById(userId: string, user: PutUserDto) {
-    const objIndex = this.users.findIndex(
-        (obj: { id: string }) => obj.id === userId
-    );
-    this.users.splice(objIndex, 1, user);
-    return `${user.id} updated via put`;
+        const objIndex = this.users.findIndex(
+            (obj: { id: string }) => obj.id === userId
+        );
+        this.users.splice(objIndex, 1, user);
+        return `${user.id} updated via put`;
     }
 
     async patchUserById(userId: string, user: PatchUserDto) {
