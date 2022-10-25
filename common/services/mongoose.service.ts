@@ -10,7 +10,7 @@ class MongooseService {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         serverSelectionTimeoutMS: 5000,
-        useFindAndModify: false,
+        
     };
 
     constructor() {
@@ -24,7 +24,7 @@ class MongooseService {
     connectWithRetry = () => {
         log('Attempting MongoDB connection (will retry if needed)');
         mongoose
-            .connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.gknmyod.mongodb.net/api-db?retryWrites=true&w=majority`)
+            .connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.gknmyod.mongodb.net/api-db?retryWrites=true&w=majority`, this.mongooseOptions)
             .then(() => {
                 log('MongoDB is connected');
             })

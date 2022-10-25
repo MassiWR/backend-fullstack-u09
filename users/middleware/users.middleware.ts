@@ -33,7 +33,7 @@ class UsersMiddleware {
         }
     }
 
-// Here we need to use an arrow function to bind `this` correctly
+    // Here we need to use an arrow function to bind `this` correctly
     validatePatchEmail = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         if (req.body.email) {
             log('Validating email', req.body.email);
@@ -56,7 +56,7 @@ class UsersMiddleware {
     }
 
 
-    async extractUserId(req: express.Request,res: express.Response,next: express.NextFunction) {
+    async extractUserId(req: express.Request, res: express.Response,next: express.NextFunction) {
         req.body.id = req.params.userId;
         next();
     }

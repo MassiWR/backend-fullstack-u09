@@ -33,6 +33,7 @@ class UsersService implements CRUD {
     async getUserByEmail(email: string): Promise<any> {
         return UsersDao.getUserByEmail(email);
     }
+
 }
 
 export default new UsersService();

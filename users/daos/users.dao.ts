@@ -19,9 +19,9 @@ class UsersDao {
         firstName: String,
         lastName: String,
         permissionFlags: Number,
-    }, { id: false });
+    }, { id: false});
 
-User = mongooseService.getMongoose().model('Users', this.userSchema);
+    User = mongooseService.getMongoose().model('Users', this.userSchema);
 
     constructor() {
         log('Created new instance of UsersDao');
@@ -43,7 +43,7 @@ User = mongooseService.getMongoose().model('Users', this.userSchema);
     }
 
     async getUserById(userId: string) {
-        return this.User.findOne({_id: userId}).populate('User').exec();
+        return this.User.findOne({_id: userId}).exec();
     }
 
 
@@ -56,7 +56,7 @@ User = mongooseService.getMongoose().model('Users', this.userSchema);
         const existingUser = await this.User.findOneAndUpdate(
             {_id: userId},
             {$set: userFields},
-            {new: true}
+            {new: true},             
         ).exec();
 
         return existingUser;
