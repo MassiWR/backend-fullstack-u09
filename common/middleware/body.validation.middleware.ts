@@ -13,3 +13,5 @@ class BodyValidationMiddleware {
 
     }
 }
+
+export default new BodyValidationMiddleware();
