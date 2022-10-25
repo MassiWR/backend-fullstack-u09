@@ -15,8 +15,9 @@ export class UsersRoutes extends CommonRoutesConfig {
             .route(`/users`)
             .get(UsersController.listUsers)
             .post(
-                body('email').isEmail(),
-                body('password').isLength({min: 5}).withMessage('Password minimum length is 5 characters'),
+                body('email').isEmail().withMessage('The given email is not valid, please enter a valid email'),
+                body('password').isLength({min: 5}).withMessage('Password minimum length must 5 characters long'),
+                bodyValidationMiddleware.verifyBodyFieldsErrors,
                 UsersMiddleware.validateSameEmailDoesntExist,
                 UsersController.createUser
             );
@@ -29,22 +30,23 @@ export class UsersRoutes extends CommonRoutesConfig {
             .delete(UsersController.removeUser);
 
         this.app.put(`/users/:userId`, [
-            body('email').isEmail(),
-            body('password').isLength({min: 5}).withMessage('Password min length is 5 characters'),
+            body('email').isEmail().withMessage('The given email is not valid, please enter a valid email'),
+            body('password').isLength({min: 5}).withMessage('Password minimum length must 5 characters long'),
             body('firstName').isString(),
             body('lastName').isString(),
             body('permissionFlags').isInt(),
+            bodyValidationMiddleware.verifyBodyFieldsErrors,
             UsersMiddleware.validateSameEmailBelongToSameUser,
             UsersController.put,
         ]);
 
         this.app.patch(`/users/:userId`, [
-            body('email').isEmail().optional(),
-            body('password').isLength({min: 5}).withMessage('Password min length is 5 characters').optional(),
-            body('lastName').isString().optional(),
-            body('firstName').isString().optional(),
+            body('email').isEmail().optional().withMessage('The given email is not valid, please try again'),
+            body('password').isLength({min: 5}).withMessage('Password minimum length must 5 characters long').optional(),
+            body('lastName').isString().optional().withMessage('Firstname must be a string'),
+            body('firstName').isString().optional().withMessage('Lastname must be a string'),
             body('permissionFlags').isInt().optional(),
-            bodyValidationMiddleware.verifyBodyFieldErrors,
+            bodyValidationMiddleware.verifyBodyFieldsErrors,
             UsersMiddleware.validatePatchEmail,
             UsersController.patch,
         ]);
