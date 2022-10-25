@@ -66,6 +66,10 @@ class UsersDao {
         return this.User.deleteOne({_id: userId}).exec();
     }
 
+    async getUserByEmailWithPassword(email: string) {
+        return this.User.findOne({email: email}).select('_id email permissionFlags +password').exec();
+    }
+
 
 }
 
