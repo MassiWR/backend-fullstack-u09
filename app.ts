@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import * as http from 'http';
 import * as winston from 'winston';
@@ -12,6 +13,12 @@ const server: http.Server = http.createServer(app);
 const port = 3000;
 const routes: Array<CommonRoutesConfig> = [];
 const debugLog: debug.IDebugger = debug('app');
+
+const dotenvResult = dotenv.config();
+
+if(dotenvResult.error) {
+    throw dotenvResult.error;
+}
 
 
 // here we are adding middleware to parse all incoming requests as JSON 
