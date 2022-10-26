@@ -24,7 +24,7 @@ class UsersMiddleware {
         }
     }
 
-    // Here we need to use an arrow function to bind `this` correctly
+    // arrow function to bind `this` correctly
     validatePatchEmail = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         if (req.body.email) {
             log('Validating email', req.body.email);
