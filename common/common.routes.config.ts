@@ -8,6 +8,8 @@ export abstract class CommonRoutesConfig {
         this.app = app;
         this.name = name;
         this.configureRoutes();
+        console.log("Abstract class CommonRoutesConfig constructor called");
+        
     }
     getName() {
         return this.name;

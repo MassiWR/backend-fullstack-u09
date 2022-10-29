@@ -9,6 +9,8 @@ import { body } from "express-validator";
 export class AuthRoutes extends CommonRoutesConfig {
     constructor(app: express.Application) {
         super(app, 'AuthRoutes');
+        console.log("AuthRoutes class constructor called");
+        
     }
 
     configureRoutes(): express.Application {

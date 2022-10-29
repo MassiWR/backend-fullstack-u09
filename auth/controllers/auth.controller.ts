@@ -3,16 +3,7 @@ import debug from 'debug';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 
-
 const log: debug.IDebugger = debug('app:auth-controller');
-
-/**
-* This value is automatically populated from .env, a file which you will have
-* to create for yourself at the root of the project.
-*
-* See .env.example in the repo for the required format.
-*/
-//ts-expect-error
 
 const jwtSecret: any = process.env.JWT_SECRET;
 const tokenExpirationInSeconds: number = 36000;
@@ -21,7 +12,9 @@ class AuthController {
     async createJWT(req: express.Request, res: express.Response) {
         try {
             const refreshId = req.body.userId + jwtSecret;
+            // create a secret key with crypto
             const salt = crypto.createSecretKey(crypto.randomBytes(16));
+            // pass the secret key and generate an Hmac object
             const hash = crypto.createHmac('sha512', salt).update(refreshId).digest('base64');
             req.body.refreshKey = salt.export();
             const token = jwt.sign(req.body, jwtSecret, {

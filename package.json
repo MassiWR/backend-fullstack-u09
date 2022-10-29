@@ -4,7 +4,7 @@
   "description": "backend fullstack-restapi",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node --unhandled-rejections=strict ./dist/app.js",
+    "start": "nodemon app.ts tsc && node --unhandled-rejections=strict ./dist/app.js",
     "debug": "export DEBUG=* && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +28,7 @@
     "express-winston": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.7",
+    "nodemon": "^2.0.20",
     "shortid": "^2.2.16",
     "winston": "^3.8.2"
   },
