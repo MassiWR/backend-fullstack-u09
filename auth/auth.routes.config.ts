@@ -28,7 +28,7 @@ export class AuthRoutes extends CommonRoutesConfig {
             jwtMiddleware.validRefreshNeeded,
             authController.createJWT
         ]);
-        
+
         return this.app;
     }
 
