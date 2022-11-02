@@ -9,6 +9,8 @@ const jwtSecret: any = process.env.JWT_SECRET;
 const tokenExpirationInSeconds: number = 36000;
 
 class AuthController {
+
+    
     async createJWT(req: express.Request, res: express.Response) {
         try {
             const refreshId = req.body.userId + jwtSecret;

@@ -11,7 +11,7 @@ import { AuthRoutes } from './auth/auth.routes.config';
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port = 3000;
+const port = 3200;
 const routes: Array<CommonRoutesConfig> = [];
 const debugLog: debug.IDebugger = debug('app');
 
@@ -57,6 +57,8 @@ app.get('/', (req: express.Request, res: express.Response) => {
     res.status(200).send(runningMessage)
 });
 
+
+export default app;
 
 server.listen(port, () => {
     routes.forEach((route: CommonRoutesConfig) => {
