@@ -58,9 +58,9 @@ app.get('/', (req: express.Request, res: express.Response) => {
 });
 
 
-export default app;
 
-server.listen(port, () => {
+
+export default server.listen(port, () => {
     routes.forEach((route: CommonRoutesConfig) => {
         debugLog(`Routes configured for ${route.getName()}`);
     });
