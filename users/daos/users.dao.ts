@@ -83,6 +83,12 @@ class UsersDao {
       { $set: { timezone: timezone, schedule: schedule } }
     ).exec();
   }
+  async getUserSchedule(id: string) {
+    return this.User.findOne(
+      { _id: id },
+      "firstName email timezone schedule"
+    ).exec();
+  }
 }
 
 export default new UsersDao();

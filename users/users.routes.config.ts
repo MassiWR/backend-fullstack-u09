@@ -90,15 +90,16 @@ export class UsersRoutes extends CommonRoutesConfig {
       UsersController.patch,
     ]);
 
-    this.app.post("/users/:userId/schedule", [
-      body("timezone").isString().withMessage("Timezone must be a string"),
-      body("schedule").isArray().withMessage("Schedule must be an array"),
-      bodyValidationMiddleware.verifyBodyFieldsErrors,
-      UsersMiddleware.validateUserExists,
+    this.app.post(`/users/:userId/schedule`, [
       jwtMiddleware.validJWTneeded,
       commonPermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+      body("timezone"),
+      body("schedule"),
+      bodyValidationMiddleware.verifyBodyFieldsErrors,
       UsersController.createUserSchedule,
     ]);
+
+    this.app.get(`/users/:userId/schedule`, [UsersController.getUserSchedule]);
 
     return this.app;
   }

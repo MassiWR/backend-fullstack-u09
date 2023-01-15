@@ -57,6 +57,10 @@ class UsersController {
     );
     res.status(204).send();
   }
+  async getUserSchedule(req: express.Request, res: express.Response) {
+    const schedule = await usersService.getUserSchedule(req.params.userId);
+    res.send(schedule);
+  }
 }
 
 export default new UsersController();

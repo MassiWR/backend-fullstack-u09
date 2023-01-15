@@ -41,6 +41,9 @@ class UsersService implements CRUD {
   async createUserSchedule(id: string, timezone: any, schedule: any) {
     return usersDao.createUserSchedule(id, timezone, schedule);
   }
+  async getUserSchedule(id: string) {
+    return usersDao.getUserSchedule(id);
+  }
 }
 
 export default new UsersService();
