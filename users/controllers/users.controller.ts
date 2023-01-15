@@ -50,7 +50,7 @@ class UsersController {
   async createUserSchedule(req: express.Request, res: express.Response) {
     log(
       await usersService.createUserSchedule(
-        req.body.id,
+        req.params.userId,
         req.body.timezone,
         req.body.schedule
       )
